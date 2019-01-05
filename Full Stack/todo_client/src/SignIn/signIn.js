@@ -42,9 +42,9 @@ class SignIn extends React.PureComponent {
             },
             body: JSON.stringify(
             {
-            "auth":{
-                "email":this.state.email, 
-                "password":this.state.password,
+            'auth':{
+                'email':this.state.email, 
+                'password':this.state.password,
             }})
             })
             .then((response) => {return response.json()})
