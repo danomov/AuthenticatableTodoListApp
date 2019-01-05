@@ -47,7 +47,7 @@ class SignIn extends React.PureComponent {
                 'password':this.state.password,
             }})
             })
-            .then((response) => {return response.json()})
+            .then((response) => { return response.json() })
             .then((data)=>{
                 localStorage.setItem('token', `${data.jwt}`);
                 this.redirect();
@@ -64,14 +64,14 @@ class SignIn extends React.PureComponent {
 
     render() {
         return (
-            <React.Fragment>
+            <div id='signin'>
                 {this.renderRedirect()}
                 <h1>Please Sign In</h1>
                 <input name='email' type='text' placeholder='Email' onChange={this.onChange}></input>
                 <input name='password' type='password' placeholder='Password' onChange={this.onChange}></input>
                 <button onClick={this.submit}>Sign In</button>
                 <button onClick={this.handleSignOut}>Sign Out</button>
-            </React.Fragment>
+            </div>
         )
     }
 }
