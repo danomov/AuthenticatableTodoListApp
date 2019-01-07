@@ -1,8 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-
-
 class SignIn extends React.PureComponent {
     constructor(props) {
         super(props)
@@ -16,10 +14,7 @@ class SignIn extends React.PureComponent {
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     }
-
-    handleSignOut = () => {
-        localStorage.clear();
-    }
+    
 
     renderRedirect = () => {
         if(this.state.redirect) {
@@ -67,10 +62,9 @@ class SignIn extends React.PureComponent {
             <div id='signin'>
                 {this.renderRedirect()}
                 <h1>Please Sign In</h1>
-                <input name='email' type='text' placeholder='Email' onChange={this.onChange}></input>
-                <input name='password' type='password' placeholder='Password' onChange={this.onChange}></input>
+                <input name='email' type='text' placeholder='Email' onChange={this.onChange}></input><br/>
+                <input name='password' type='password' placeholder='Password' onChange={this.onChange}></input><br/>
                 <button onClick={this.submit}>Sign In</button>
-                <button onClick={this.handleSignOut}>Sign Out</button>
             </div>
         )
     }
