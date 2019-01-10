@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
+import './signUp.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class SignUp extends React.PureComponent {
     constructor(props){
@@ -81,15 +83,15 @@ class SignUp extends React.PureComponent {
         return (
             <React.Fragment>
             {this.renderRedirect()}
-            <div id='signup'>
+            <div className='signup'>
             <h1>Sign Up</h1>
-            <input name='email' type='text' placeholder='Email' onChange={this.onChange}></input><br/>
+            <TextField id='outlined-name' label='Email' margin='normal' variant='outlined' name='email' type='text' placeholder='Email' onChange={this.onChange}/><br/>
             <p className='error'>{this.state.inputErrors.email}</p>
-            <input name='password' type='password' placeholder='Password' onChange={this.onChange}></input><br/>
+            <TextField id='outlined-name' label='Password' margin='normal' variant='outlined' name='password' type='password' placeholder='Password' onChange={this.onChange}/><br/>
             <p className='error'>{this.state.inputErrors.password}</p>
-            <input name='password_confirmation' type='password' placeholder='Password Confirmation' onChange={this.onChange}></input><br/>
+            <TextField id='outlined-name' label='Password Confirmation' margin='normal' variant='outlined' name='password_confirmation' type='password' placeholder='Password Confirmation' onChange={this.onChange}/><br/>
             <p className='error'>{this.state.inputErrors.confirmPassword}</p>
-            <button onClick={this.handleSignUp}>Sign Up</button>
+            <Button variant="contained" size="medium" color="primary" onClick={this.handleSignUp}>Sign Up</Button>
             </div>
             </React.Fragment>
         )

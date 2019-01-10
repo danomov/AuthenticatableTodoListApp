@@ -1,5 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import './signIn.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class SignIn extends React.PureComponent {
     constructor(props) {
@@ -8,8 +11,10 @@ class SignIn extends React.PureComponent {
             email: '',
             password: '',
             redirect: false,
+            errors: '',
         }
     }
+  
     
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -28,7 +33,7 @@ class SignIn extends React.PureComponent {
     }
 
 
-    submit = () => {      
+    submit = () => {   
         
         fetch('http://localhost:3000/user_token', {
             method: 'POST',
@@ -47,7 +52,7 @@ class SignIn extends React.PureComponent {
                 localStorage.setItem('token', `${data.jwt}`);
                 this.redirect();
             })
-            .catch(err => { console.log(err) })
+            .catch(err => { this.setState({errors: 'Invalid Email or Password'}); console.log(`%c${err}`, 'color: yellow; background: red; font-size:20px') })
     
     }
 
@@ -59,12 +64,13 @@ class SignIn extends React.PureComponent {
 
     render() {
         return (
-            <div id='signin'>
+            <div className='signin'>
                 {this.renderRedirect()}
-                <h1>Please Sign In</h1>
-                <input name='email' type='text' placeholder='Email' onChange={this.onChange}></input><br/>
-                <input name='password' type='password' placeholder='Password' onChange={this.onChange}></input><br/>
-                <button onClick={this.submit}>Sign In</button>
+                <h1>Sign In</h1>
+                <p className='error'>{this.state.errors}</p>
+                <TextField id='outlined-name' label='Email' margin='normal' variant='outlined' name='email' type='text' placeholder='Email' onChange={this.onChange}/><br/>
+                <TextField id='outlined-name' label='Password' margin='normal' variant='outlined' name='password' type='password' placeholder='Password' onChange={this.onChange}/><br/>
+                <Button variant="contained" size="medium" color="primary" onClick={this.submit}>Sign In</Button>
             </div>
         )
     }

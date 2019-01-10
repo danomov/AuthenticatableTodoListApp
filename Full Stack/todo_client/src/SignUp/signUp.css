@@ -1,8 +1,12 @@
-.signin {
+.signup {
     width: 400px;
     height: auto;
     margin: 0 auto; 
     border: 2px solid black;
     border-radius: 5px;
     padding: 20px;
+}
+
+.error {
+    color: red;
 }
