@@ -44,9 +44,9 @@ class SignUp extends React.PureComponent {
             isValid = false;
             inputErrors.password = 'Minimum length of password is 6 characters and maximum is 50';
         }
-        if(this.state.password !== this.state.confirmPassword || this.state.confirmPassword.length < 6){
+        if(this.state.password !== this.state.password_confirmation || this.state.password_confirmation.length < 6){
             isValid = false;
-            inputErrors.confirmPassword = 'Confirm password error';
+            inputErrors.password_confirmation = 'Confirm password error';
         }
         
         this.setState({
