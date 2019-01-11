@@ -6,7 +6,19 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.all
 
-    render json: @todos
+    @filteredTodos = []
+
+    token = request.headers["Authorization"]
+
+    decoded = JWT.decode token, nil, false
+
+    info = decoded[0]['sub']
+
+    @todos.each do |key|
+      @filteredTodos.push([key['title'], key['id']]) if key['user_id'] == info
+    end
+
+    render json: @filteredTodos
   end
 
   # GET /todos/1
@@ -47,6 +59,14 @@ class TodosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def todo_params
-      params.require(:todo).permit(:title, :finished)
+
+    token = request.headers["Authorization"]
+
+    decoded = JWT.decode token, nil, false
+
+    info = decoded[0]['sub']
+
+    params.require(:todo).permit(:title, :finished, :user_id).merge(user_id: info)
+  
     end
 end

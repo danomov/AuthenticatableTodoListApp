@@ -4,7 +4,8 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6, too_short: 'password must have at least 6 characters' } 
     validates :password_confirmation, presence: true, length: { minimum: 6, too_short: 'password must have at least 6 characters' }
     
-    
+    has_many :todos
+
     def to_token_payload
         {
             sub: id,
