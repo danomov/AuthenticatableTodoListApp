@@ -6,7 +6,11 @@ class Todos extends React.PureComponent {
         super(props)
         this.state = {
            data: '',
-           redirect: false,
+           name: 'data',
+           todoId: '',
+           todoTitle: '',
+           newTodoRoute: false,
+           editTodoRoute: false,
         }
     }
 
@@ -14,13 +18,16 @@ class Todos extends React.PureComponent {
         localStorage.clear()
     }
 
-    redirect = () => {
-        this.setState({redirect: true})
+    handleNewTodo = () => {
+        this.setState({newTodoRoute: true})
     }
 
     renderRedirect = () => {
-        if(this.state.redirect){
+        if(this.state.newTodoRoute){
         return <Redirect to='/todos/create'/>;
+        }
+        else if(this.state.editTodoRoute){
+        return <Redirect to={{pathname: '/todos/edit', state: { title: this.state.todoTitle, id: this.state.todoId }}}/>;
         }
     }
 
@@ -49,6 +56,10 @@ class Todos extends React.PureComponent {
         .catch(err => { alert(err) })
     }
 
+    handleEditTodo = (e) => {
+        this.setState({editTodoRoute: true, todoId: e.target.id, todoTitle: e.target.name})
+    }
+
     componentDidMount() {
         this.fetchTodos();
     }
@@ -60,12 +71,13 @@ class Todos extends React.PureComponent {
                 <React.Fragment>
                     {this.renderRedirect()}
                 <div id='data'>
-                <button onClick={this.redirect}>New Todo</button>
+                <button onClick={this.handleNewTodo}>New Todo</button>
                 {
                     this.state.data.map(element => {
                         return (
                         <div key={element[1]}>
                         <h1>{element[0]}</h1>
+                        <button id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</button>
                         <button id={element[1]} onClick={this.handleDelete}>DELETE</button>
                         </div>
                         )
