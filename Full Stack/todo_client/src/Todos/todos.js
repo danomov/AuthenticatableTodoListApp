@@ -2,12 +2,11 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SearchBar from '../SearchBar/searchBar';
 
-class Todos extends React.PureComponent {
+class Todos extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
            data: '',
-           name: 'data',
            todoId: '',
            todoTitle: '',
            newTodoRoute: false,
@@ -41,7 +40,7 @@ class Todos extends React.PureComponent {
             },
             })
             .then((response) => { return response.json() })
-            .then((data)=>{ this.setState({data: data}) })
+            .then((fetchData)=>{ this.setState({data: fetchData}) })
             .catch(err => { console.log(err) })
     }
 
