@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import SearchBar from '../SearchBar/searchBar';
 
 class Todos extends React.PureComponent {
     constructor(props) {
@@ -60,6 +61,10 @@ class Todos extends React.PureComponent {
         this.setState({editTodoRoute: true, todoId: e.target.id, todoTitle: e.target.name})
     }
 
+    onClick = (e, filteredData) => {
+        this.setState({data: filteredData});
+    }
+
     componentDidMount() {
         this.fetchTodos();
     }
@@ -71,7 +76,8 @@ class Todos extends React.PureComponent {
                 <React.Fragment>
                     {this.renderRedirect()}
                 <div id='data'>
-                <button onClick={this.handleNewTodo}>New Todo</button>
+                <button onClick={this.handleNewTodo}>New Todo</button><br/>
+                <SearchBar data={this.state.data} onClick={this.onClick}/>
                 {
                     this.state.data.map(element => {
                         return (
