@@ -11,7 +11,7 @@ const theme = createMuiTheme({
     typography: {
       useNextVariants: true,
     },
-  });
+});
 
 
 class SearchBar extends React.PureComponent {

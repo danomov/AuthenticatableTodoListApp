@@ -1,5 +1,18 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+
+const theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+});
 
 class NewTodo extends React.PureComponent {
 
@@ -47,11 +60,14 @@ class NewTodo extends React.PureComponent {
 
     render() {
         return(
-        <React.Fragment>
+        <div style={{border: '2px solid black', borderRadius: '5px', width: '300px', margin: '0 auto', height: 'auto', padding: '20px 40px 60px 40px'}}>
         {this.renderRedirect()}
-        <input name='title' type='text' onChange={this.onChange} placeholder='Title'/>
-        <button onClick={this.handleAdd}>Add</button>
-        </React.Fragment>
+        <p style={{marginTop: '0'}}>New Todo</p>
+        <Input name='title' type='text' onChange={this.onChange} placeholder='Title'/>
+        <MuiThemeProvider theme={theme}>
+        <Button variant="contained" size="small" color="primary" onClick={this.handleAdd}>Add</Button>
+        </MuiThemeProvider>
+        </div>
         )
     }
 }
