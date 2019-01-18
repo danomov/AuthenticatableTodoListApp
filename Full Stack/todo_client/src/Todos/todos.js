@@ -1,6 +1,19 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import './todos.css';
 import SearchBar from '../SearchBar/searchBar';
+import Button from '@material-ui/core/Button';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { blueGrey } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+    palette: {
+      primary: blueGrey,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+});
 
 class Todos extends React.Component {
     constructor(props) {
@@ -9,6 +22,7 @@ class Todos extends React.Component {
            data: '',
            todoId: '',
            todoTitle: '',
+           filteredTodos: '',
            newTodoRoute: false,
            editTodoRoute: false,
         }
@@ -61,7 +75,7 @@ class Todos extends React.Component {
     }
 
     onClick = (e, filteredData) => {
-        this.setState({data: filteredData});
+        this.setState({filteredTodos: filteredData});
     }
 
     componentDidMount() {
@@ -70,21 +84,55 @@ class Todos extends React.Component {
 
 
     render () {
-        if(this.state.data){
+        if(this.state.data && !this.state.filteredTodos){
             return (
                 <React.Fragment>
                     {this.renderRedirect()}
                 <div id='data'>
-                <button onClick={this.handleNewTodo}>New Todo</button><br/>
+                <MuiThemeProvider theme={theme}>
+                <Button id='new' variant='contained' size='medium' color='primary' onClick={this.handleNewTodo}>New Todo</Button><br/>
+                </MuiThemeProvider>
                 <SearchBar data={this.state.data} onClick={this.onClick}/>
                 {
                     this.state.data.map(element => {
                         return (
-                        <div key={element[1]}>
-                        <h1>{element[0]}</h1>
-                        <button id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</button>
-                        <button id={element[1]} onClick={this.handleDelete}>DELETE</button>
-                        </div>
+                        <table key={element[1]}>
+                        <td>
+                        <p>{element[0]}</p>
+                        </td>
+                        <td>
+                        <Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button>
+                        <Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button>
+                        </td>
+                        </table>
+                        )
+                    })
+                }
+                </div>
+                </React.Fragment>
+            )
+        }
+        else if(this.state.filteredTodos){
+            return (
+                <React.Fragment>
+                    {this.renderRedirect()}
+                <div id='data'>
+                <MuiThemeProvider theme={theme}>
+                <Button id='new' variant='contained' size='medium' color='primary' onClick={this.handleNewTodo}>New Todo</Button><br/>
+                </MuiThemeProvider>
+                <SearchBar data={this.state.data} onClick={this.onClick}/>
+                {
+                    this.state.filteredTodos.map(element => {
+                        return (
+                        <table key={element[1]}>
+                        <td>
+                        <p>{element[0]}</p>
+                        </td>
+                        <td>
+                        <Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button>
+                        <Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button>
+                        </td>
+                        </table>
                         )
                     })
                 }

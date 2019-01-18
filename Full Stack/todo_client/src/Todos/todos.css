@@ -1,0 +1,19 @@
+#new {
+    margin-bottom: 100px;
+}
+
+table {
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: auto;
+}
+
+p {
+    font-size: 30px;
+}
+
+body {
+    padding-bottom: 80px;
+}

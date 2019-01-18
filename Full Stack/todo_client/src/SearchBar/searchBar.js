@@ -1,4 +1,17 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import green from '@material-ui/core/colors/green';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+      primary: green,
+    },
+    typography: {
+      useNextVariants: true,
+    },
+  });
 
 
 class SearchBar extends React.PureComponent {
@@ -14,6 +27,7 @@ class SearchBar extends React.PureComponent {
             if(element[0].includes(e.target.value)){
                 return element;
             }
+            return null;
         });
 
         this.setState({filteredData: newData});
@@ -28,8 +42,10 @@ class SearchBar extends React.PureComponent {
     render(){
         return (
             <React.Fragment>
-            <input onChange={this.onChange} type='search' placeholder='Search text'></input>
-            <button onClick={(e) => this.props.onClick(e, this.state.filteredData)}>Search</button>
+            <Input onChange={this.onChange} type='search' placeholder='Search text'></Input>
+            <MuiThemeProvider theme={theme}>
+            <Button variant="contained" size="small" color="primary" onClick={(e) => this.props.onClick(e, this.state.filteredData)}>Search</Button>
+            </MuiThemeProvider>
             </React.Fragment>
         )
     }
