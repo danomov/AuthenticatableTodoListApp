@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    background: #fcfcfa;
+    color: #818078;
+    font-family: Futura, sans-serif;
+}
+  
+p {
+    font-family: 'Playfair Display SC', serif;
+}
+
+h2 {
+    font-family: 'Poiret One', cursive;
+    font-size: 2.5em
+}
+
+img {
+    height: 800px;
+    width: 100%;
+}
+
+.topTitle {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -8,12 +8,9 @@ table {
     border: 2px solid black;
     border-radius: 10px;
     width: auto;
+    margin-bottom: 40px;
 }
 
 p {
     font-size: 30px;
-}
-
-body {
-    padding-bottom: 80px;
 }

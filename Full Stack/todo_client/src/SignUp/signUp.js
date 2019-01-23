@@ -90,7 +90,7 @@ class SignUp extends React.PureComponent {
             <TextField id='outlined-name' label='Password' margin='normal' variant='outlined' name='password' type='password' placeholder='Password' onChange={this.onChange}/><br/>
             <p className='error'>{this.state.inputErrors.password}</p>
             <TextField id='outlined-name' label='Password Confirmation' margin='normal' variant='outlined' name='password_confirmation' type='password' placeholder='Password Confirmation' onChange={this.onChange}/><br/>
-            <p className='error'>{this.state.inputErrors.confirmPassword}</p>
+            <p className='error'>{this.state.inputErrors.password_confirmation}</p>
             <Button variant="contained" size="medium" color="primary" onClick={this.handleSignUp}>Sign Up</Button>
             </div>
             </React.Fragment>
