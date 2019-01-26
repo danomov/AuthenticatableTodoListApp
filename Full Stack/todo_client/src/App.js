@@ -11,6 +11,8 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from './Header/header';
 import Footer from './Footer/footer';
 
+window.onbeforeunload = function() { localStorage.clear(); return ''; };
+
 class App extends React.PureComponent {
   render() {
     return (
