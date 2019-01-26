@@ -32,7 +32,7 @@ class Grids extends React.PureComponent {
             <Grid item xs>
                 <Paper className={classes.paper}>
                 <span className='icon'>
-                    <i class="far fa-edit"></i>
+                    <i className="far fa-edit"></i>
                 </span>
                     <h1>EDIT</h1>
                 </Paper>
@@ -40,7 +40,7 @@ class Grids extends React.PureComponent {
             <Grid item xs>
                 <Paper className={classes.paper}>
                 <span className='icon'>
-                    <i class="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt"></i>
                 </span>
                     <h1>DELETE</h1>
                 </Paper>

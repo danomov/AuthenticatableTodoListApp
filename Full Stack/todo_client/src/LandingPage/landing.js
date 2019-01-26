@@ -3,12 +3,12 @@ import './landing.css';
 import Steps from './Stepper/stepper'
 import Grids from './Grid/grid';
 
-export default class Landing extends Component {
+class Landing extends Component {
   render() {
     return (
       <React.Fragment>
         <div className='topContent'>
-        <div class='topTitle'>
+        <div className='topTitle'>
         <h2>ACCESS YOUR TODOS FROM EVERYWHERE AND EVERYTIME</h2> 
         </div>
         <img alt='image1' src='https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'></img>
@@ -34,3 +34,5 @@ export default class Landing extends Component {
     )
   }
 }
+
+export default Landing;

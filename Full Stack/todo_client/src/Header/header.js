@@ -40,7 +40,7 @@ class Header extends React.Component {
             <Toolbar id='toolbar' className='con'>
                 {(localStorage.getItem('token')) ? <Link to='/todos' style={{textDecoration: 'none', color: 'black'}}><Button id='signInButton' color='inherit'>TODOS</Button></Link> : null }
                 <Typography id='h6' variant='h6' color='inherit' className={classes.grow}>
-                    <Link to='/todos' style={{textDecoration: 'none', color: 'black'}}>TO-DO</Link>
+                    <Link to='/' style={{textDecoration: 'none', color: 'black'}}>TO-DO</Link>
                 </Typography>
                 {(localStorage.getItem('token')) ? <Link to='/signin' style={{textDecoration: 'none', color: 'black'}}><Button id='signInButton' color='inherit' onClick={this.handleSignOut}>Sign Out</Button></Link>: <Link to='/signin' style={{textDecoration: 'none', color: 'black'}}><Button id='signInButton' color='inherit'>Sign In</Button></Link> }
                 <Link to='/signup' style={{textDecoration: 'none', color: 'black'}}><Button id='signUpButton' color='inherit' href='/signup'>Sign Up</Button></Link>

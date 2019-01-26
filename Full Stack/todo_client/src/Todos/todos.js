@@ -66,7 +66,7 @@ class Todos extends React.Component {
               'Authorization': localStorage.getItem('token'),
             },
         })
-        .then(() => this.fetchTodos())
+        .then(() => { this.setState({filteredTodos: ''}); this.fetchTodos()})
         .catch(err => { alert(err) })
     }
 
