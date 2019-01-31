@@ -43,7 +43,7 @@ class Header extends React.Component {
                     <Link to='/' style={{textDecoration: 'none', color: 'black'}}>TO-DO</Link>
                 </Typography>
                 {(localStorage.getItem('token')) ? <Link to='/signin' style={{textDecoration: 'none', color: 'black'}}><Button id='signInButton' color='inherit' onClick={this.handleSignOut}>Sign Out</Button></Link>: <Link to='/signin' style={{textDecoration: 'none', color: 'black'}}><Button id='signInButton' color='inherit'>Sign In</Button></Link> }
-                <Link to='/signup' style={{textDecoration: 'none', color: 'black'}}><Button id='signUpButton' color='inherit' href='/signup'>Sign Up</Button></Link>
+                <Link to='/signup' style={{textDecoration: 'none', color: 'black'}}><Button id='signUpButton' color='inherit'>Sign Up</Button></Link>
             </Toolbar>    
         );
     }

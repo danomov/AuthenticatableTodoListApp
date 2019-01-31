@@ -97,13 +97,15 @@ class Todos extends React.Component {
                     this.state.data.map(element => {
                         return (
                         <table key={element[1]}>
-                        <td>
-                        <p>{element[0]}</p>
-                        </td>
-                        <td>
-                        <Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button>
-                        <Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button>
-                        </td>
+                        <tbody>
+                        <tr style={{display: 'inline-block'}}>
+                        <td><p>{element[0]}</p></td>
+                        </tr>
+                        <tr style={{display: 'inline-block'}}>
+                        <td><Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button></td>
+                        <td><Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button></td>
+                        </tr>
+                        </tbody>
                         </table>
                         )
                     })
@@ -115,7 +117,7 @@ class Todos extends React.Component {
         else if(this.state.filteredTodos){
             return (
                 <React.Fragment>
-                    {this.renderRedirect()}
+                {this.renderRedirect()}
                 <div id='data'>
                 <MuiThemeProvider theme={theme}>
                 <Button id='new' variant='contained' size='medium' color='primary' onClick={this.handleNewTodo}>New Todo</Button><br/>
@@ -124,15 +126,17 @@ class Todos extends React.Component {
                 {
                     this.state.filteredTodos.map(element => {
                         return (
-                        <table key={element[1]}>
-                        <td>
-                        <p>{element[0]}</p>
-                        </td>
-                        <td>
-                        <Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button>
-                        <Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button>
-                        </td>
-                        </table>
+                         <table key={element[1]}>
+                         <tbody>
+                         <tr style={{display: 'inline-block'}}>
+                         <td><p>{element[0]}</p></td>
+                         </tr>
+                         <tr style={{display: 'inline-block'}}>
+                         <td><Button style={{marginLeft: '70px'}} variant='contained' size='small' color='primary' id={element[1]} name={element[0]} onClick={this.handleEditTodo}>Edit</Button></td>
+                         <td><Button style={{marginLeft: '5px'}}  variant='contained' size='small' color='secondary' id={element[1]} onClick={this.handleDelete}>DELETE</Button></td>
+                         </tr>
+                         </tbody>
+                         </table>
                         )
                     })
                 }
